@@ -273,6 +273,26 @@ img {
 .jobs-list .jobs-item + .jobs-item {
   margin-left: 30px;
 }
+.jobs-block {
+  position: relative;
+}
+.jobs-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 27px 82px;
+  width: 370px;
+  height: 70px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  color: var(--primary-white-color);
+  background-color: rgba(47, 48, 58, 0.8);
+  text-transform: uppercase;
+  text-align: center;
+}
 
 /* секция команда(Team) страница "студия" --------------------*/
 .team-section {
