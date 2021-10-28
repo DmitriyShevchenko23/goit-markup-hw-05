@@ -124,6 +124,8 @@ img {
   letter-spacing: 0.02em;
   color: var(--title-text-color);
   text-decoration: none;
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nav-link:hover,
 .nav-link:focus {
@@ -146,7 +148,7 @@ img {
   background-color: var(--accent-color);
 }
 /* почта+телефон -----------------------------*/
-.nav-contacts {
+.nav-contacts-list {
   display: flex;
   margin-left: auto;
 
@@ -156,7 +158,7 @@ img {
   letter-spacing: 0.02em;
   list-style: none;
 }
-.nav-contacts .contacts-item + .contacts-item {
+.nav-contacts-list .contacts-item + .contacts-item {
   margin-left: 50px;
 }
 .contacts-link {
@@ -166,6 +168,8 @@ img {
   text-decoration: none;
   font-style: normal;
   letter-spacing: 0.03em;
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hover-link:hover,
 .hover-link:focus {
@@ -224,10 +228,18 @@ img {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+
+  z-index: 1;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
+}
+.backdrop.is-hidden.scale {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
 }
 .modal {
   position: absolute;
@@ -235,7 +247,8 @@ img {
   left: 50%;
   width: 528px;
   height: 581px;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
+
   border-radius: 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -252,6 +265,7 @@ img {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   background-color: var(--primary-white-color);
+  cursor: pointer;
 }
 .close-icon {
 }
@@ -409,6 +423,8 @@ img {
   height: 44px;
   border: none;
   border-radius: 50%;
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-icon {
   fill: #afb1b8;
@@ -438,6 +454,8 @@ img {
   height: 92px;
   border: 1px solid #afb1b8;
   border-radius: 4px;
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .clients-link:hover,
 .clients-link:focus {
@@ -449,6 +467,8 @@ img {
 }
 .clients-icon {
   fill: #afb1b8;
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* футер--------------------------------------------------- */
@@ -487,6 +507,8 @@ img {
   letter-spacing: 0.03em;
   color: var(--primary-white-color);
   text-decoration: none;
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .address-link:hover,
 .address-link:focus {
@@ -518,6 +540,8 @@ img {
   border: none;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-social-link:hover,
 .footer-social-link:focus {
@@ -563,6 +587,8 @@ img {
   color: var(--title-text-color);
   background-color: var(--bg-white-color);
   cursor: pointer;
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .filter-btn:hover,
 .filter-btn:focus {
@@ -586,22 +612,69 @@ img {
   border-bottom: 1px solid #eeeeee;
   border-left: 1px solid #eeeeee;
 }
+
 .portfolio-item:nth-child(3n) {
   margin-right: 0;
 }
 .portfolio-item:nth-last-child(-n + 3) {
   margin-bottom: 0;
 }
+
 .portfolio-link {
   display: flex;
   flex-wrap: wrap;
   text-decoration: none;
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .portfolio-link:hover,
 .portfolio-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+.portfolio-overlay-block {
+  position: relative;
+  overflow: hidden;
+}
+.overlay-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(33, 150, 243, 0.9);
+  transform: translateY(100%);
+
+  opacity: 0;
+}
+.portfolio-link:hover .overlay-block,
+.portfolio-link:focus .overlay-block {
+  opacity: 1;
+  transform: translateY(0);
+}
+.portfolio-block-text {
+  display: flex;
+  width: 322px;
+  height: 168px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+  opacity: 0;
+
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  color: var(--primary-white-color);
+}
+.portfolio-link:hover .portfolio-block-text,
+.portfolio-link:focus .portfolio-block-text {
+  opacity: 1;
+}
+
 .portfolio-card {
   padding: 20px 24px;
 }
